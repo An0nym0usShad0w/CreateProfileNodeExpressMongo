@@ -81,8 +81,17 @@
         }
 
         .userName{
-            color: black;
+            color:rgb(0, 0, 0);
             text-align: center;
+        }
+
+        .deleteButton{
+            margin-top: 10px;
+            text-align: right;
+            background-color: rgb(6, 52, 204);
+            color: white;
+            border-radius: 3px;
+            visibility: hidden;
         }
     </style>
 
@@ -95,14 +104,45 @@
         <% users.forEach(user=>{ %>
             <% const imgSrc=user.image %>
             <div class='Container'>
-                <div class='userName' style='font-size: 30px;'>Name: <b><%= user.name%></b></div>
+                <div class='userName' style='font-size: 30px;'> <b><%= user.name%></b></div>
                 <div id='userHobby'>Hobby: <%= user.hobby %></div>
                 <div>Goal: <%= user.goal%></div>
                 <div>Dream: <%= user.dream%></div>
                 <img src=<%= imgSrc %> >
+                <button class='deleteButton' id= <%=user._id%> data-doc>X</button>
             </div>
         <% }) %>
     </div>
+
+    <script>
+
+        const allProfiles=document.querySelectorAll('.Container');
+        const deleteBtns=document.querySelectorAll('.deleteButton');
+
+        allProfiles.forEach(element=>{
+            element.addEventListener('mouseover', (e)=>{
+                const currentBtn = element.querySelector('button.deleteButton');
+                currentBtn.style.visibility = 'visible';
+            })
+            element.addEventListener('mouseout', (e)=>{
+                const currentBtn = element.querySelector('button.deleteButton');
+                currentBtn.style.visibility = 'hidden';
+            })
+        })
+
+
+        deleteBtns.forEach(element => {
+            element.addEventListener('click', (e)=>{
+                var pass=window.prompt('Enter Pass: ')
+                if(pass ==='loldelete36'){
+                    location.href = 'seeUsers/'+element.getAttribute('id');
+                }
+                else{
+                    window.alert('You do not have the permission to delete')
+                }
+            })
+        });
+    </script>
     
 
 </body>

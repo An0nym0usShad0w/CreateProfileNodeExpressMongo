@@ -10,7 +10,8 @@ const mongodb = require('mongodb');
 const dotenv = require('dotenv');
 dotenv.config();
 
-const connectionString='mongodb+srv://netninja:test1234@nodepracticecluster.jmhpf.mongodb.net/ProfileCollector?retryWrites=true&w=majority'
+const connectionString =
+	'mongodb+srv://netninja:test1234@nodepracticecluster.jmhpf.mongodb.net/ProfileCollector?retryWrites=true&w=majority';
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -61,6 +62,18 @@ app.get('/seeUsers', (req, res) => {
 		// await res.send(results);
 		res.render('seeCurrentUsers', { users: users });
 	});
+});
+
+app.get('/seeUsers/:id', (req, res) => {
+	const id = req.params.id;
+
+	User.findByIdAndDelete(id)
+		.then((result) => {
+			res.redirect('/seeUsers');
+		})
+		.catch((err) => {
+			console.log(err);
+		});
 });
 
 app.listen(3000, () => {
