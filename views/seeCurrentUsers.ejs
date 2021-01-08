@@ -121,6 +121,8 @@
         const allProfiles=document.querySelectorAll('.Container');
         const deleteBtns=document.querySelectorAll('.deleteButton');
 
+        const currPass='loldelete36';
+
         allProfiles.forEach(element=>{
             element.addEventListener('mouseover', (e)=>{
                 const currentBtn = element.querySelector('button.deleteButton');
@@ -136,7 +138,7 @@
         deleteBtns.forEach(element => {
             element.addEventListener('click', (e)=>{
                 var pass=window.prompt('Enter Pass: ')
-                if(pass ==='loldelete36'){
+                if(pass ===currPass){
                     location.href = 'seeUsers/'+element.getAttribute('id');
                 }
                 else{

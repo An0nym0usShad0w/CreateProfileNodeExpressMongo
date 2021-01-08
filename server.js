@@ -12,9 +12,6 @@ const port = process.env.PORT || 3000;
 const dotenv = require('dotenv');
 dotenv.config();
 
-const connectionString =
-	'mongodb+srv://netninja:test1234@nodepracticecluster.jmhpf.mongodb.net/ProfileCollector?retryWrites=true&w=majority';
-
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //set template engine
@@ -23,7 +20,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(express.static('public'));
 
-mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.CONNECTIONSTRING, { useNewUrlParser: true, useUnifiedTopology: true });
 
 //create data schema
 
@@ -55,7 +52,7 @@ app.post('/', (req, res) => {
 });
 
 app.get('/seeUsers', (req, res) => {
-	mongodb.connect(connectionString, { useUnifiedTopology: true }, async (err, client) => {
+	mongodb.connect(process.env.CONNECTIONSTRING, { useUnifiedTopology: true }, async (err, client) => {
 		const db = client.db();
 		const results = await db.collection('users').find().toArray();
 
