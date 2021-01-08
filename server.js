@@ -6,6 +6,8 @@ const bodyParser = require('body-parser');
 const mongodb = require('mongodb');
 // const ejs=require('ejs')
 
+const port = process.env.PORT || 3000;
+
 //set dotenv
 const dotenv = require('dotenv');
 dotenv.config();
@@ -76,6 +78,6 @@ app.get('/seeUsers/:id', (req, res) => {
 		});
 });
 
-app.listen(3000, () => {
+app.listen(port, () => {
 	console.log('server is working');
 });
