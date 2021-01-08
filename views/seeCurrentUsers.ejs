@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Your Profile!</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Salsa&display=swap" rel="stylesheet">
+</head>
+<body>
+    <style>
+        body{
+            margin-top: 0px;
+            background: linear-gradient(90deg, rgba(4,229,242,1) 0%, rgba(30,18,206,1) 100%);
+        }
+
+        #ProfileGridContainer{
+            margin-left: auto;
+            margin-right: auto;
+            justify-content: center;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 17px;
+            color:white;
+            font-family: 'Salsa', cursive;
+        }
+
+        .Container{
+            background: linear-gradient(90deg, rgba(7, 226, 255, 0.815) 0%, rgba(4, 145, 232, 0.836) 100%);
+            min-height:200px;
+            width:300px;
+            padding:15px;
+            /* border:2px solid black; */
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 10px;
+        }
+
+        .Container div{
+            font-size: 20px;
+        }
+
+        .Container img{
+            /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+
+            margin-top: 10px;
+
+            min-height: 250px;
+            min-width: 250px;
+            max-height: 250px;
+            max-width: 250px;
+
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+
+            border-radius: 10px;
+        }
+
+        nav{
+            font-size: 50px;
+            font-weight: bold;
+            font-family: 'Salsa', cursive;
+            margin-top: 0px;
+            text-align: right;
+        }
+        nav a{
+            color: rgb(255, 239, 13);
+            text-decoration: none;
+        }
+
+        nav :hover{
+            color:orange;
+        }
+
+        #WelcomeMsg{
+            font-family:'Salsa', cursive;
+            font-size:30px;
+            text-align: center;
+            color:white;
+            margin-bottom: 20px;
+        }
+
+        .userName{
+            font-size: 10px;
+            text-align: center;
+        }
+    </style>
+
+
+    <nav><a href='/'>Create Your OWN!</a></nav>
+
+    <div id='WelcomeMsg'>User Profiles:</div>
+
+    <div id='ProfileGridContainer'>
+        <% users.forEach(user=>{ %>
+            <% const imgSrc=user.image %>
+            <div class='Container'>
+                <div class='userName'>Name: <b><%= user.name%></b></div>
+                <div id='userHobby'>Hobby: <%= user.hobby %></div>
+                <div>Goal: <%= user.goal%></div>
+                <div>Dream: <%= user.dream%></div>
+                <img src=<%= imgSrc %> >
+            </div>
+        <% }) %>
+    </div>
+    
+
+</body>
+</html>
