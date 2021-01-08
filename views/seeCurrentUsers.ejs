@@ -81,7 +81,7 @@
         }
 
         .userName{
-            font-size: 10px;
+            color: black;
             text-align: center;
         }
     </style>
@@ -95,7 +95,7 @@
         <% users.forEach(user=>{ %>
             <% const imgSrc=user.image %>
             <div class='Container'>
-                <div class='userName'>Name: <b><%= user.name%></b></div>
+                <div class='userName' style='font-size: 30px;'>Name: <b><%= user.name%></b></div>
                 <div id='userHobby'>Hobby: <%= user.hobby %></div>
                 <div>Goal: <%= user.goal%></div>
                 <div>Dream: <%= user.dream%></div>
